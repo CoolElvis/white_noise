@@ -37,7 +37,7 @@ module Noise
     def links
       {
         'about' => {
-          'href' => bugsnag_search_url.to_s,
+          'href' => search_url.to_s,
         },
       }
     end
@@ -62,6 +62,14 @@ module Noise
 
       template = Addressable::Template.new(BUGSNAG_URL)
       template.expand(id: id, organization: Noise.config.bugsnag_organization, project: Noise.config.bugsnag_project)
+    end
+
+    def search_url
+      if Noise.config.sentry_url && Noise.config.sentry_enabled
+        Noise.config.sentry_url
+      else
+        bugsnag_search_url
+      end
     end
   end
 end

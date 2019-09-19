@@ -13,7 +13,8 @@ module Noise
   autoload :ExceptionRenderer
   autoload :PublicErrorSerializer
 
-  config.bugsnag_enabled = true
+  config.bugsnag_enabled = false
+  config.sentry_enabled = false
   config.bugsnag_organization = nil
   config.bugsnag_project = nil
   config.exception_renderer = ExceptionRenderer
